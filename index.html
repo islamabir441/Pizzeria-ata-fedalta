@@ -75,7 +75,6 @@
             </a>
         </div>
     </header>
-
     <!-- MAIN CONTAINER -->
     <main class="w-full max-w-md mx-auto my-6 flex-grow space-y-5">
 
@@ -126,15 +125,20 @@
             </form>
             <div id="login-error" class="text-red-400 text-xs mt-2 text-center hidden"></div>
         </div>
-
         <!-- DASHBOARD -->
         <div id="dashboard-section" class="hidden space-y-6">
             <div class="editorial-card p-6 rounded-3xl border border-stone-800/90 relative">
                 <div class="flex justify-between items-center mb-4">
-                    <div>
-                        <h3 id="user-display-name" class="text-lg font-bold text-white">Nome</h3>
-                        <p id="user-display-phone" class="text-xs text-stone-300 font-medium"></p>
-                        <p class="text-xs text-amber-300 font-mono" id="user-display-code">ATA-0000</p>
+                    <div class="flex items-center gap-3">
+                        <div class="relative w-12 h-12 rounded-full bg-stone-900 border border-amber-400/50 overflow-hidden flex items-center justify-center shrink-0">
+                            <img id="client-profile-avatar" src="" alt="Foto Profilo" class="w-full h-full object-cover hidden">
+                            <span id="client-profile-fallback" class="text-lg">👤</span>
+                        </div>
+                        <div>
+                            <h3 id="user-display-name" class="text-lg font-bold text-white">Nome</h3>
+                            <p id="user-display-phone" class="text-xs text-stone-300 font-medium"></p>
+                            <p class="text-xs text-amber-300 font-mono" id="user-display-code">ATA-0000</p>
+                        </div>
                     </div>
                     <button onclick="logout()" class="text-xs text-stone-400 hover:text-white underline">Esci</button>
                 </div>
@@ -153,10 +157,10 @@
                 <div class="bg-stone-950/90 p-4 rounded-2xl text-center border border-stone-800/90 mb-6">
                     <span class="text-[10px] tracking-[0.2em] text-stone-400 block uppercase font-semibold">Timbri Raccolti</span>
                     <span id="stamp-count" class="text-4xl font-extrabold text-pizzaOrange">0</span><span class="text-stone-500 text-xl">/10</span>
+                    <p id="cycle-reset-notice" class="text-[11px] text-amber-300/90 mt-1">Dopo 10 ordini il contatore riparte automaticamente da 0 per un nuovo ciclo.</p>
                 </div>
 
                 <div class="grid grid-cols-5 gap-3 mb-4" id="stamps-grid"></div>
-
                 <!-- 10TH ORDER SCRATCH CARD (1 PIZZA GRATIS + SCELTA PIZZA) -->
                 <div id="scratch-10th-box" class="bg-gradient-to-r from-orange-950/50 via-stone-950/90 to-amber-950/40 p-4 rounded-2xl border border-amber-400/35 mb-5 space-y-3">
                     <div class="flex items-center justify-between gap-3">
@@ -252,7 +256,6 @@
                 </div>
             </div>
         </div>
-
         <!-- HIDDEN ADMIN PANEL TRIGGER -->
         <div class="mt-10 text-center">
             <span onclick="triggerSecretAdmin()" class="text-[10px] text-stone-700 hover:text-stone-500 cursor-pointer select-none">
@@ -277,6 +280,13 @@
             </div>
 
             <div id="admin-content" class="hidden space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-2 bg-stone-950/90 border border-stone-800 rounded-2xl p-2.5">
+                    <span id="voice-alert-status" class="text-[11px] text-amber-300 font-semibold">🔊 Voce: attiva su ordine</span>
+                    <button type="button" onclick="enableVoiceAlertManual()" class="px-3 py-1 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-[11px] font-bold transition">
+                        Test Voce "PizzeriaAta new order"
+                    </button>
+                </div>
+
                 <div class="grid grid-cols-5 gap-1 border-b border-stone-800 pb-2">
                     <button onclick="switchAdminTab('pinGen')" id="tab-btn-pin" class="py-1.5 text-[10px] font-bold bg-pizzaOrange text-white rounded-xl">PIN</button>
                     <button onclick="switchAdminTab('clientList')" id="tab-btn-list" class="py-1.5 text-[10px] font-bold bg-stone-800 text-stone-300 rounded-xl">Clienti</button>
@@ -315,7 +325,6 @@
                         <p class="text-xs text-stone-500 text-center py-4">Caricamento...</p>
                     </div>
                 </div>
-
                 <div id="admin-view-offer" class="hidden space-y-3">
                     <div class="bg-stone-950/90 border border-stone-800 rounded-xl p-2.5 text-[11px] text-stone-300 leading-relaxed">
                         Gestisci qui facilmente le offerte dal <strong class="text-amber-300">1° al 10° timbro</strong>. Puoi aggiungere o cambiare un'offerta in qualsiasi numero (es. il <strong class="text-white">3° timbro</strong>) in un clic.
@@ -448,7 +457,6 @@
                     </div>
                     <div id="admin-offer-msg" class="text-xs text-center text-stone-400"></div>
                 </div>
-
                 <div id="admin-view-menu-pdf" class="hidden space-y-3">
                     <div class="bg-stone-950/90 border border-stone-800 rounded-xl p-2.5 text-[11px] text-stone-300 leading-relaxed">
                         Carica qui il <strong class="text-amber-300">Menu in formato PDF</strong> dal tuo dispositivo oppure inserisci un link PDF. Quando il cliente apre <strong class="text-white">Menu Qui</strong>, potrà leggere il PDF e ordinare.
@@ -483,10 +491,10 @@
 
                 <div id="admin-view-logo" class="hidden space-y-3">
                     <div class="bg-stone-950/90 border border-stone-800 rounded-xl p-2.5 text-[11px] text-stone-300 leading-relaxed">
-                        Inserisci un <strong class="text-amber-300">link immagine pubblico</strong> (es. dal sito) oppure carica una foto. Per far apparire il logo automaticamente a <strong>tutti i clienti su ogni telefono</strong>, salva su Google Apps Script.
+                        Imposta il <strong class="text-amber-300">Logo del Locale</strong> oppure la <strong class="text-amber-300">Foto Profilo Cliente</strong> (visibile anche al cliente sulla carta quando salvata via link pubblico o backend).
                     </div>
                     <div>
-                        <label class="block text-[10px] uppercase text-stone-400 mb-1.5">URL Logo (https://...)</label>
+                        <label class="block text-[10px] uppercase text-stone-400 mb-1.5">URL Logo / Foto Profilo (https://...)</label>
                         <div class="flex gap-2">
                             <input type="url" id="admin-logo-url" placeholder="https://www.pizzeriaata.com/logo.png"
                                 class="flex-1 px-3 py-2 rounded-xl bg-stone-950 border border-stone-800 text-xs text-white focus:outline-none focus:border-pizzaOrange">
@@ -513,13 +521,112 @@
     <footer class="w-full max-w-md mx-auto text-center py-4 text-xs text-stone-600 border-t border-stone-900">
         &copy; 2026 Pizzeria ATA &bull; Tutti i diritti riservati
     </footer>
-
     <script>
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzYrPO2mukLdJpn4vOtQhB6vhq2ZgiVMcPwpYJFKGs-Pzu6CbPLNoOSXFN6qsphDwjN/exec";
         const LOGO_STORAGE_KEY = "ata_custom_logo_data";
         const SCRATCH_10_KEY = "ata_scratch_10_revealed";
+        const VOICE_ALERT_TEXT = "PizzeriaAta new order";
 
         let currentUser = JSON.parse(localStorage.getItem('ata_user')) || null;
+        let audioUnlocked = false;
+        let sharedAudioCtx = null;
+
+        function normalizeStampCount(rawStamps) {
+            const num = Number(rawStamps);
+            if (!Number.isFinite(num) || num <= 0) return 0;
+            // After 10 orders, cycle automatically starts from 0 (e.g., 10 -> 0, 11 -> 1)
+            const mod = num % 10;
+            return mod === 0 ? 0 : mod;
+        }
+
+        function updateCycleResetNotice(rawStamps) {
+            const noticeEl = document.getElementById('cycle-reset-notice');
+            if (!noticeEl) return;
+            const num = Number(rawStamps || 0);
+            if (num > 0 && num % 10 === 0) {
+                noticeEl.textContent = "10 ordini completati! Il contatore è ripartito automaticamente da 0 per il nuovo ciclo.";
+                noticeEl.className = "text-[11px] text-emerald-400 font-semibold mt-1";
+            } else {
+                noticeEl.textContent = "Dopo 10 ordini il contatore riparte automaticamente da 0 per un nuovo ciclo.";
+                noticeEl.className = "text-[11px] text-amber-300/90 mt-1";
+            }
+        }
+
+        function ensureAudioContext() {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            if (!AudioCtx) return null;
+            if (!sharedAudioCtx) {
+                sharedAudioCtx = new AudioCtx();
+            }
+            if (sharedAudioCtx.state === 'suspended') {
+                sharedAudioCtx.resume().catch(() => {});
+            }
+            return sharedAudioCtx;
+        }
+
+        function playOrderChime() {
+            try {
+                const ctx = ensureAudioContext();
+                if (!ctx) return;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = "triangle";
+                osc.frequency.setValueAtTime(784, ctx.currentTime);
+                osc.frequency.setValueAtTime(1046.5, ctx.currentTime + 0.12);
+                gain.gain.setValueAtTime(0.14, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.35);
+            } catch (e) {
+                // Ignore audio errors on restricted devices
+            }
+        }
+
+        function triggerNewOrderVoiceAlert(reasonLabel = "") {
+            playOrderChime();
+            const statusEl = document.getElementById('voice-alert-status');
+            if ("speechSynthesis" in window) {
+                try {
+                    window.speechSynthesis.cancel();
+                    const utterance = new SpeechSynthesisUtterance(VOICE_ALERT_TEXT);
+                    utterance.lang = "en-US";
+                    utterance.rate = 1.0;
+                    utterance.pitch = 1.0;
+                    window.speechSynthesis.speak(utterance);
+                    if (statusEl) {
+                        statusEl.textContent = `🔊 Voce: "${VOICE_ALERT_TEXT}"${reasonLabel ? " (" + reasonLabel + ")" : ""}`;
+                        statusEl.className = "text-[11px] text-emerald-400 font-semibold";
+                    }
+                } catch (e) {
+                    if (statusEl) {
+                        statusEl.textContent = "⚠️ Tocca 'Test Voce' per attivare l'audio del browser.";
+                        statusEl.className = "text-[11px] text-amber-300 font-semibold";
+                    }
+                }
+            }
+        }
+
+        function enableVoiceAlertManual() {
+            audioUnlocked = true;
+            ensureAudioContext();
+            triggerNewOrderVoiceAlert("Attivata");
+        }
+
+        document.addEventListener('pointerdown', function unlockOnceOnGesture() {
+            if (!audioUnlocked) {
+                audioUnlocked = true;
+                ensureAudioContext();
+                if ("speechSynthesis" in window) {
+                    try {
+                        const warmUp = new SpeechSynthesisUtterance("");
+                        warmUp.volume = 0;
+                        window.speechSynthesis.speak(warmUp);
+                    } catch (e) {}
+                }
+            }
+        }, { passive: true });
 
         const MENU_PDF_KEY = "ata_menu_pdf_config_v1";
         let currentMenuPdf = { name: "", dataUrl: "" };
@@ -679,8 +786,6 @@
                 msg.style.color = "#9ca3af";
             }
         }
-
-
         const OFFER_CONFIG_KEY = "ata_offers_config_v2";
 
         const DEFAULT_OFFER_CONFIG = {
@@ -795,7 +900,7 @@
             setText('scratch-10th-badge', cfg.scratchBadge);
             renderMilestonesList(cfg);
             if (currentUser) {
-                renderStamps(currentUser.stamps);
+                renderStamps(normalizeStampCount(currentUser.stamps));
             }
         }
 
@@ -958,8 +1063,8 @@
                 msg.style.color = "#9ca3af";
             }
         }
-
-
+    </script>
+    <script>
         const DEFAULT_MENU_ITEMS = [
             { name: "Margherita", cat: "Classiche", price: "6,50€", desc: "Pomodoro San Marzano, mozzarella, basilico, olio EVO" },
             { name: "Marinara", cat: "Classiche", price: "5,50€", desc: "Pomodoro San Marzano, aglio, origano, olio EVO" },
@@ -1059,7 +1164,6 @@
                 container.appendChild(row);
             });
         }
-
         let scratchInitialized = false;
 
         window.onload = function() {
@@ -1073,6 +1177,27 @@
                 showDashboard(currentUser);
             }
         };
+
+        function applyProfilePicToClient(picValue, userObj) {
+            const avatarImg = document.getElementById('client-profile-avatar');
+            const avatarFallback = document.getElementById('client-profile-fallback');
+            const candidate = (picValue || (userObj && (userObj.profilePic || userObj.avatar || userObj.photoUrl)) || "").trim();
+
+            if (!avatarImg || !avatarFallback) return;
+            if (candidate) {
+                avatarImg.onerror = function() {
+                    avatarImg.classList.add('hidden');
+                    avatarFallback.classList.remove('hidden');
+                };
+                avatarImg.src = candidate;
+                avatarImg.classList.remove('hidden');
+                avatarFallback.classList.add('hidden');
+            } else {
+                avatarImg.src = "";
+                avatarImg.classList.add('hidden');
+                avatarFallback.classList.remove('hidden');
+            }
+        }
 
         function applyLogoToView(logoValue) {
             const logoImg = document.getElementById('shop-logo');
@@ -1095,6 +1220,14 @@
                 logoImg.classList.add('hidden');
                 fallback.classList.remove('hidden');
             }
+
+            if (currentUser) {
+                currentUser.profilePic = logoValue ? logoValue.trim() : "";
+                localStorage.setItem('ata_user', JSON.stringify(currentUser));
+                applyProfilePicToClient(currentUser.profilePic, currentUser);
+            } else {
+                applyProfilePicToClient(logoValue || "", null);
+            }
         }
 
         function loadSavedLogo() {
@@ -1111,7 +1244,8 @@
                         action: 'adminAction',
                         subAction: 'setLogo',
                         password: pass,
-                        logoUrl: logoValue
+                        logoUrl: logoValue,
+                        profilePic: logoValue
                     })
                 });
                 const data = await res.json();
@@ -1128,10 +1262,11 @@
                     body: JSON.stringify({ action: 'getLogo' })
                 });
                 const data = await res.json();
-                if (data && data.status === 'success' && typeof data.logoUrl === 'string') {
-                    if (data.logoUrl.trim() !== "") {
-                        localStorage.setItem(LOGO_STORAGE_KEY, data.logoUrl.trim());
-                        applyLogoToView(data.logoUrl.trim());
+                const remotePic = (data && (data.logoUrl || data.profilePic)) || "";
+                if (data && data.status === 'success' && typeof remotePic === 'string') {
+                    if (remotePic.trim() !== "") {
+                        localStorage.setItem(LOGO_STORAGE_KEY, remotePic.trim());
+                        applyLogoToView(remotePic.trim());
                     }
                 }
             } catch (e) {
@@ -1154,10 +1289,10 @@
             applyLogoToView(url);
             const synced = await syncLogoToBackend(url);
             if (synced) {
-                msg.textContent = "Logo salvato e visibile a tutti i clienti!";
+                msg.textContent = "Foto salvata e visibile a tutti i clienti!";
                 msg.style.color = "#4ade80";
             } else {
-                msg.textContent = "Logo impostato qui. Per mostrarlo a tutti i clienti su altri dispositivi, abilita 'setLogo/getLogo' su Apps Script o usa un link pubblico.";
+                msg.textContent = "Foto impostata qui. Per farla vedere su ogni dispositivo ai clienti, abilita 'setLogo/getLogo' su Apps Script o usa un link pubblico.";
                 msg.style.color = "#fbbf24";
             }
         }
@@ -1252,7 +1387,11 @@
                 const data = await response.json();
 
                 if (data.status === 'success') {
-                    currentUser = data;
+                    const savedPic = localStorage.getItem(LOGO_STORAGE_KEY) || "";
+                    currentUser = {
+                        ...data,
+                        profilePic: data.profilePic || data.avatar || savedPic
+                    };
                     localStorage.setItem('ata_user', JSON.stringify(currentUser));
                     showDashboard(currentUser);
                 } else {
@@ -1274,7 +1413,7 @@
             const btn = document.getElementById('order-wa-pin-btn');
             if (!box || !btn || !title || !desc) return;
 
-            const currentStamps = Number(user.stamps || 0);
+            const currentStamps = normalizeStampCount(user.stamps);
             const nextOrderNum = Math.min(currentStamps + 1, 10);
             const phoneText = user.phone || user.identifier || '';
 
@@ -1430,6 +1569,8 @@
             document.getElementById('login-section').classList.add('hidden');
             document.getElementById('dashboard-section').classList.remove('hidden');
             const phoneVal = user.phone || user.identifier || '';
+            const displayStamps = normalizeStampCount(user.stamps);
+
             document.getElementById('user-display-name').textContent = user.name;
             const phoneEl = document.getElementById('user-display-phone');
             if (phoneEl) {
@@ -1437,21 +1578,24 @@
                 phoneEl.classList.toggle('hidden', !phoneVal);
             }
             document.getElementById('user-display-code').textContent = user.code;
-            document.getElementById('stamp-count').textContent = user.stamps;
+            document.getElementById('stamp-count').textContent = displayStamps;
 
+            applyProfilePicToClient(user.profilePic || user.avatar || localStorage.getItem(LOGO_STORAGE_KEY) || "", user);
+            updateCycleResetNotice(user.stamps);
             updateOrderPinBox(user);
             setupScratch10thOrder(user.stamps, user);
-            renderStamps(user.stamps);
+            renderStamps(displayStamps);
             checkReward(user.reward, user.code);
         }
 
         function renderStamps(stamps) {
             const grid = document.getElementById('stamps-grid');
             grid.innerHTML = '';
+            const activeCount = normalizeStampCount(stamps);
             const offers = normalizeStampOffers(currentOfferConfig?.stampOffers, currentOfferConfig);
 
             for (let i = 1; i <= 10; i++) {
-                const isStamped = i <= stamps;
+                const isStamped = i <= activeCount;
                 const customOffer = (offers[i] || '').trim();
                 const div = document.createElement('div');
                 div.className = `h-14 rounded-xl flex flex-col items-center justify-center text-xs font-bold border transition ${
@@ -1500,8 +1644,7 @@
                 rewardBox.classList.add('hidden');
             }
         }
-
-        async function redeemPin() {
+async function redeemPin() {
             const pin = document.getElementById('redeem-pin-input').value.trim();
             const msg = document.getElementById('redeem-msg');
 
@@ -1520,18 +1663,25 @@
                 const data = await response.json();
 
                 if (data.status === 'success') {
-                    msg.textContent = 'Timbro aggiunto con successo!';
+                    const rawStamps = Number(data.stamps || 0);
+                    const cycleStamps = normalizeStampCount(rawStamps);
+                    msg.textContent = rawStamps > 0 && rawStamps % 10 === 0
+                        ? '10 ordini completati! Contatore ripartito da 0.'
+                        : 'Timbro aggiunto con successo!';
                     msg.style.color = '#4ade80';
-                    currentUser.stamps = data.stamps;
+                    currentUser.stamps = cycleStamps;
+                    currentUser.rawStamps = rawStamps;
                     currentUser.reward = data.reward;
                     localStorage.setItem('ata_user', JSON.stringify(currentUser));
                     
-                    document.getElementById('stamp-count').textContent = data.stamps;
+                    document.getElementById('stamp-count').textContent = cycleStamps;
+                    updateCycleResetNotice(rawStamps);
                     updateOrderPinBox(currentUser);
-                    setupScratch10thOrder(data.stamps, currentUser);
-                    renderStamps(data.stamps);
+                    setupScratch10thOrder(rawStamps, currentUser);
+                    renderStamps(cycleStamps);
                     checkReward(data.reward, currentUser.code);
                     document.getElementById('redeem-pin-input').value = '';
+                    triggerNewOrderVoiceAlert("Nuovo Ordine");
                 } else {
                     msg.textContent = data.message;
                     msg.style.color = '#f87171';
@@ -1564,6 +1714,7 @@
             if (pass === 'ata2026') {
                 document.getElementById('admin-login-box').classList.add('hidden');
                 document.getElementById('admin-content').classList.remove('hidden');
+                enableVoiceAlertManual();
                 switchAdminTab('pinGen');
                 loadClientList();
             } else {
@@ -1643,6 +1794,7 @@
                 const data = await response.json();
 
                 if (data.status === 'success') {
+                    triggerNewOrderVoiceAlert("Ordine Confermato");
                     const waPinMsg = encodeURIComponent(
                         `Ciao! Ordine confermato da Pizzeria ATA (${amount}€). Ecco il tuo PIN per riscattare il timbro: ${data.pin}`
                     );
@@ -1675,7 +1827,6 @@
             }
         }
 
-
         function syncOfferPreset() {
             const preset = document.getElementById('admin-offer-preset').value;
             const textInput = document.getElementById('admin-offer-text');
@@ -1700,7 +1851,8 @@
             if (pinText) bodyLines.push(`PIN: ${pinText}`);
             if (offerText) bodyLines.push(`Offerta / Premio: ${offerText}`);
 
-            const encoded = encodeURIComponent(bodyLines.join('\n'));
+            const encoded = encodeURIComponent(bodyLines.join('
+'));
             const digits = rawPhone.replace(/[^0-9]/g, '');
             const waUrl = digits.length >= 8
                 ? `https://wa.me/${digits.startsWith('39') ? digits : '39' + digits}?text=${encoded}`
@@ -1734,6 +1886,7 @@
 
             container.innerHTML = '';
             filtered.forEach(c => {
+                const cycleCount = normalizeStampCount(c.stamps);
                 const div = document.createElement('div');
                 div.className = "bg-stone-950 p-2.5 rounded-xl border border-stone-800 text-xs flex justify-between items-center gap-2";
                 div.innerHTML = `
@@ -1744,7 +1897,7 @@
                         ${c.reward ? `<p class="text-[10px] text-emerald-400">Premio: ${c.reward}</p>` : ''}
                     </div>
                     <div class="text-right shrink-0">
-                        <span class="text-sm font-extrabold text-pizzaOrange">${c.stamps}</span>
+                        <span class="text-sm font-extrabold text-pizzaOrange">${cycleCount}</span>
                         <span class="text-[10px] text-stone-500 block">Timbri</span>
                     </div>
                 `;
@@ -1779,7 +1932,6 @@
             }
         }
     </script>
-
     <!-- IN-APP MENU MODAL (NO NEED TO LEAVE APP) -->
     <div id="menu-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-3 sm:p-5">
         <div class="editorial-card w-full max-w-md max-h-[85vh] rounded-3xl border border-amber-500/30 flex flex-col overflow-hidden">
@@ -1799,7 +1951,6 @@
                 <button type="button" onclick="filterMenuCategory('Speciali')" data-cat="Speciali" class="menu-cat-btn px-3 py-1.5 rounded-full bg-stone-900 text-stone-300 border border-stone-800 font-semibold whitespace-nowrap">Speciali</button>
                 <button type="button" onclick="filterMenuCategory('Bibite')" data-cat="Bibite" class="menu-cat-btn px-3 py-1.5 rounded-full bg-stone-900 text-stone-300 border border-stone-800 font-semibold whitespace-nowrap">Bibite</button>
             </div>
-
             <div id="menu-pdf-viewer-box" class="hidden p-4 space-y-3 overflow-y-auto flex-grow text-xs">
                 <div class="bg-stone-950/90 border border-amber-500/30 rounded-2xl p-3 flex items-center justify-between gap-2">
                     <div>
