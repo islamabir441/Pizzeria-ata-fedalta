@@ -50,7 +50,6 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between p-4 sm:p-5">
 
-    <!-- HEADER & BRANDING -->
     <header class="w-full max-w-md mx-auto text-center pt-5 pb-6 border-b border-amber-500/15">
         <div class="mb-3 flex justify-center">
             <div class="relative w-20 h-20 rounded-full bg-stone-900 border border-amber-400/50 p-0.5 overflow-hidden flex items-center justify-center shadow-xl">
@@ -75,10 +74,9 @@
             </a>
         </div>
     </header>
-    <!-- MAIN CONTAINER -->
+
     <main class="w-full max-w-md mx-auto my-6 flex-grow space-y-5">
 
-        <!-- LOGIN SECTION (FIRST PAGE) -->
         <div id="login-section" class="editorial-card p-6 rounded-3xl border border-stone-800/90 space-y-5">
             <div class="text-center space-y-1.5">
                 <span class="inline-block text-[10px] uppercase tracking-[0.22em] text-pizzaOrange font-bold px-2.5 py-0.5 rounded-full bg-orange-950/60 border border-orange-500/20">
@@ -111,12 +109,12 @@
             <form id="login-form" onsubmit="handleLogin(event)" class="space-y-3.5 pt-0.5">
                 <div>
                     <label class="block text-[11px] uppercase tracking-wider text-stone-400 mb-1.5 font-semibold">Numero di telefono</label>
-                    <input type="text" id="login-identifier" required placeholder="es. 3331234567" 
+                    <input type="text" id="login-identifier" required placeholder="es. 3331234567"
                         class="w-full px-4 py-3 rounded-xl bg-stone-950/90 border border-stone-800 text-white text-sm focus:outline-none focus:border-pizzaOrange transition">
                 </div>
                 <div>
                     <label class="block text-[11px] uppercase tracking-wider text-stone-400 mb-1.5 font-semibold">Nome</label>
-                    <input type="text" id="login-name" required placeholder="Il tuo nome" 
+                    <input type="text" id="login-name" required placeholder="Il tuo nome"
                         class="w-full px-4 py-3 rounded-xl bg-stone-950/90 border border-stone-800 text-white text-sm focus:outline-none focus:border-pizzaOrange transition">
                 </div>
                 <button type="submit" id="login-btn" class="w-full py-3.5 bg-pizzaOrange hover:bg-orange-600 font-bold rounded-xl transition shadow-lg text-white text-sm tracking-wide">
@@ -140,7 +138,7 @@
                             <p class="text-xs text-amber-300 font-mono" id="user-display-code">ATA-0000</p>
                         </div>
                     </div>
-                    <button onclick="logout()" class="text-xs text-stone-400 hover:text-white underline">Esci</button>
+                    <button type="button" onclick="logout()" class="text-xs text-stone-400 hover:text-white underline">Esci</button>
                 </div>
 
                 <!-- ASPORTO FLOW & ORDER NOTICE -->
@@ -161,7 +159,8 @@
                 </div>
 
                 <div class="grid grid-cols-5 gap-3 mb-4" id="stamps-grid"></div>
-                <!-- 10TH ORDER SCRATCH CARD (1 PIZZA GRATIS + SCELTA PIZZA) -->
+
+                <!-- 10TH ORDER SCRATCH CARD -->
                 <div id="scratch-10th-box" class="bg-gradient-to-r from-orange-950/50 via-stone-950/90 to-amber-950/40 p-4 rounded-2xl border border-amber-400/35 mb-5 space-y-3">
                     <div class="flex items-center justify-between gap-3">
                         <div class="text-xs space-y-1">
@@ -175,7 +174,6 @@
                         </div>
                     </div>
 
-                    <!-- LISTA PIZZE PER IL 10° TIMBRO -->
                     <div id="tenth-pizza-selector" class="hidden pt-2.5 border-t border-stone-800 space-y-2.5">
                         <p class="text-xs font-semibold text-amber-300">Scegli la pizza che desideri ordinare con il 10° timbro:</p>
                         <select id="tenth-pizza-select" onchange="updateTenthPizzaOrder()"
@@ -206,7 +204,7 @@
                     </div>
                 </div>
 
-                <!-- ORDER PIN WHATSAPP OPTION (2A PAGINA: 1° ORDINE & ORDINI SUCCESSIVI) -->
+                <!-- ORDER PIN WHATSAPP OPTION -->
                 <div id="order-pin-box" class="bg-emerald-950/25 p-3.5 rounded-2xl border border-emerald-800/60 mb-4 space-y-2.5">
                     <div class="flex items-center justify-between gap-2">
                         <p id="order-pin-title" class="text-xs font-bold text-emerald-400">1° Ordine &bull; Richiedi PIN</p>
@@ -232,7 +230,7 @@
                     <div class="flex gap-2">
                         <input type="text" id="redeem-pin-input" placeholder="Inserisci PIN" maxlength="4"
                             class="w-full px-3 py-2 rounded-xl bg-black border border-stone-700 text-sm text-center tracking-widest text-white uppercase focus:outline-none focus:border-pizzaOrange">
-                        <button onclick="redeemPin()" class="bg-pizzaOrange hover:bg-orange-600 px-4 py-2 rounded-xl text-xs font-bold text-white transition">
+                        <button type="button" onclick="redeemPin()" class="bg-pizzaOrange hover:bg-orange-600 px-4 py-2 rounded-xl text-xs font-bold text-white transition">
                             Riscatta
                         </button>
                     </div>
@@ -243,7 +241,7 @@
                     <p class="text-xs text-emerald-400 font-bold uppercase">🎉 Premio Sbloccato!</p>
                     <p id="reward-text" class="text-sm font-extrabold text-white"></p>
                     <a href="https://www.pizzeriaata.com/" target="_blank" class="inline-block w-full py-2.5 bg-pizzaOrange hover:bg-orange-600 text-white font-bold text-xs rounded-xl transition shadow-md">
-                        🌐 Vai al Sito & Menu (pizzeriaata.com)
+                        🌐 Vai al Sito &amp; Menu (pizzeriaata.com)
                     </a>
                     <a id="whatsapp-reward-btn" href="#" target="_blank" class="inline-block w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition shadow-md">
                         💬 Invia codice su WhatsApp alla Pizzeria
@@ -258,25 +256,26 @@
         </div>
         <!-- HIDDEN ADMIN PANEL TRIGGER -->
         <div class="mt-10 text-center">
-            <span onclick="triggerSecretAdmin()" class="text-[10px] text-stone-700 hover:text-stone-500 cursor-pointer select-none">
+            <button type="button" onclick="triggerSecretAdmin()" class="px-4 py-2 text-xs text-stone-600 hover:text-stone-400 cursor-pointer select-none">
                 &bull; &bull; &bull;
-            </span>
+            </button>
         </div>
 
         <!-- ADMIN PANEL -->
         <div id="admin-section" class="hidden mt-4 editorial-card p-5 rounded-3xl border border-amber-500/50 space-y-4 shadow-2xl">
             <div class="flex justify-between items-center border-b border-stone-800 pb-2">
                 <h3 class="text-md font-bold text-amber-300">🔐 Pannello Gestione Pizzeria ATA</h3>
-                <button onclick="lockAdmin()" class="text-xs text-stone-400 hover:text-white">Chiudi X</button>
+                <button type="button" onclick="lockAdmin()" class="text-xs text-stone-400 hover:text-white">Chiudi X</button>
             </div>
-            
-            <div id="admin-login-box">
-                <p class="text-xs text-stone-400 mb-2">Inserisci la password riservata al pizzaiolo:</p>
+
+            <div id="admin-login-box" class="space-y-2">
+                <p class="text-xs text-stone-400">Inserisci la password riservata al pizzaiolo:</p>
                 <input type="password" id="admin-pass" placeholder="Password Admin" onkeydown="if(event.key==='Enter'){unlockAdmin();}"
-                    class="w-full px-3 py-2 rounded-xl bg-stone-950 border border-stone-800 text-sm text-white mb-2">
-                <button onclick="unlockAdmin()" class="w-full py-2 bg-pizzaOrange hover:bg-orange-600 text-white text-sm font-bold rounded-xl transition">
+                    class="w-full px-3 py-2.5 rounded-xl bg-stone-950 border border-stone-800 text-sm text-white">
+                <button type="button" onclick="unlockAdmin()" class="w-full py-2.5 bg-pizzaOrange hover:bg-orange-600 text-white text-sm font-bold rounded-xl transition">
                     Accedi Gestionale
                 </button>
+                <p id="admin-login-error" class="text-xs text-red-400 text-center hidden"></p>
             </div>
 
             <div id="admin-content" class="hidden space-y-4">
@@ -288,25 +287,25 @@
                 </div>
 
                 <div class="grid grid-cols-5 gap-1 border-b border-stone-800 pb-2">
-                    <button onclick="switchAdminTab('pinGen')" id="tab-btn-pin" class="py-1.5 text-[10px] font-bold bg-pizzaOrange text-white rounded-xl">PIN</button>
-                    <button onclick="switchAdminTab('clientList')" id="tab-btn-list" class="py-1.5 text-[10px] font-bold bg-stone-800 text-stone-300 rounded-xl">Clienti</button>
-                    <button onclick="switchAdminTab('offerSet')" id="tab-btn-offer" class="py-1.5 text-[10px] font-bold bg-stone-800 text-stone-300 rounded-xl">Offerte</button>
-                    <button onclick="switchAdminTab('menuPdfSet')" id="tab-btn-menu-pdf" class="py-1.5 text-[10px] font-bold bg-stone-800 text-stone-300 rounded-xl">Menu PDF</button>
-                    <button onclick="switchAdminTab('logoSet')" id="tab-btn-logo" class="py-1.5 text-[10px] font-bold bg-stone-800 text-stone-300 rounded-xl">Logo</button>
+                    <button type="button" onclick="switchAdminTab('pinGen')" id="tab-btn-pin" class="py-1.5 text-[10px] font-bold bg-pizzaOrange text-white rounded-xl">PIN</button>
+                    <button type="button" onclick="switchAdminTab('clientList')" id="tab-btn-list" class="py-1.5 text-[10px] font-bold bg-stone-800 text-stone-300 rounded-xl">Clienti</button>
+                    <button type="button" onclick="switchAdminTab('offerSet')" id="tab-btn-offer" class="py-1.5 text-[10px] font-bold bg-stone-800 text-stone-300 rounded-xl">Offerte</button>
+                    <button type="button" onclick="switchAdminTab('menuPdfSet')" id="tab-btn-menu-pdf" class="py-1.5 text-[10px] font-bold bg-stone-800 text-stone-300 rounded-xl">Menu PDF</button>
+                    <button type="button" onclick="switchAdminTab('logoSet')" id="tab-btn-logo" class="py-1.5 text-[10px] font-bold bg-stone-800 text-stone-300 rounded-xl">Logo</button>
                 </div>
 
                 <div id="admin-view-pin" class="space-y-3">
                     <div>
                         <label class="block text-[10px] uppercase text-stone-400 mb-1">Telefono del cliente</label>
-                        <input type="text" id="admin-target-phone" placeholder="es. 3331234567" 
+                        <input type="text" id="admin-target-phone" placeholder="es. 3331234567"
                             class="w-full px-3 py-2 rounded-xl bg-stone-950 border border-stone-800 text-xs text-white">
                     </div>
                     <div>
                         <label class="block text-[10px] uppercase text-stone-400 mb-1">Importo dell'ordine (€)</label>
-                        <input type="number" id="admin-order-amount" placeholder="es. 22" 
+                        <input type="number" id="admin-order-amount" placeholder="es. 22"
                             class="w-full px-3 py-2 rounded-xl bg-stone-950 border border-stone-800 text-xs text-white">
                     </div>
-                    <button onclick="generatePinForClient()" class="w-full py-2.5 bg-pizzaOrange hover:bg-orange-600 rounded-xl text-xs font-bold text-white transition">
+                    <button type="button" onclick="generatePinForClient()" class="w-full py-2.5 bg-pizzaOrange hover:bg-orange-600 rounded-xl text-xs font-bold text-white transition">
                         Genera PIN
                     </button>
                     <div id="admin-msg" class="text-xs text-center p-2 rounded-xl bg-stone-950"></div>
@@ -315,7 +314,7 @@
                 <div id="admin-view-list" class="hidden space-y-2.5">
                     <div class="flex justify-between items-center">
                         <span class="text-xs font-bold text-stone-300">Clienti Registrati</span>
-                        <button onclick="loadClientList()" class="text-[10px] text-amber-300 underline">Aggiorna Lista</button>
+                        <button type="button" onclick="loadClientList()" class="text-[10px] text-amber-300 underline">Aggiorna Lista</button>
                     </div>
                     <div>
                         <input type="text" id="admin-client-search" oninput="renderFilteredClients()" placeholder="Cerca codice (es. ATA-1024), nome o telefono..."
@@ -325,9 +324,10 @@
                         <p class="text-xs text-stone-500 text-center py-4">Caricamento...</p>
                     </div>
                 </div>
+
                 <div id="admin-view-offer" class="hidden space-y-3">
                     <div class="bg-stone-950/90 border border-stone-800 rounded-xl p-2.5 text-[11px] text-stone-300 leading-relaxed">
-                        Gestisci qui facilmente le offerte dal <strong class="text-amber-300">1° al 10° timbro</strong>. Puoi aggiungere o cambiare un'offerta in qualsiasi numero (es. il <strong class="text-white">3° timbro</strong>) in un clic.
+                        Gestisci qui facilmente le offerte dal <strong class="text-amber-300">1° al 10° timbro</strong>. Puoi aggiungere o cambiare un'offerta in qualsiasi numero in un clic.
                     </div>
 
                     <div class="space-y-2">
@@ -457,17 +457,16 @@
                     </div>
                     <div id="admin-offer-msg" class="text-xs text-center text-stone-400"></div>
                 </div>
+
                 <div id="admin-view-menu-pdf" class="hidden space-y-3">
                     <div class="bg-stone-950/90 border border-stone-800 rounded-xl p-2.5 text-[11px] text-stone-300 leading-relaxed">
-                        Carica qui il <strong class="text-amber-300">Menu in formato PDF</strong> dal tuo dispositivo oppure inserisci un link PDF. Quando il cliente apre <strong class="text-white">Menu Qui</strong>, potrà leggere il PDF e ordinare.
+                        Carica qui il <strong class="text-amber-300">Menu in formato PDF</strong> dal tuo dispositivo oppure inserisci un link PDF.
                     </div>
-
                     <div>
                         <label class="block text-[10px] uppercase text-stone-400 mb-1.5">Carica File Menu PDF</label>
                         <input type="file" id="admin-menu-pdf-file" accept="application/pdf,.pdf" onchange="handleMenuPdfUpload(event)"
                             class="w-full text-xs text-stone-300 file:mr-3 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-pizzaOrange file:text-white hover:file:bg-orange-600 cursor-pointer bg-stone-950 rounded-xl border border-stone-800 p-1">
                     </div>
-
                     <div>
                         <label class="block text-[10px] uppercase text-stone-400 mb-1.5">Oppure Link PDF (https://...pdf)</label>
                         <div class="flex gap-2">
@@ -478,11 +477,9 @@
                             </button>
                         </div>
                     </div>
-
                     <div id="admin-menu-pdf-status" class="bg-stone-950/80 border border-stone-800 rounded-xl p-2.5 text-[11px] text-stone-300">
                         Nessun PDF caricato: viene mostrato il menu rapido interno.
                     </div>
-
                     <button type="button" onclick="resetMenuPdf()" class="w-full py-2 bg-stone-800 hover:bg-stone-700 rounded-xl text-xs font-bold text-stone-300 transition">
                         Rimuovi Menu PDF
                     </button>
@@ -491,14 +488,14 @@
 
                 <div id="admin-view-logo" class="hidden space-y-3">
                     <div class="bg-stone-950/90 border border-stone-800 rounded-xl p-2.5 text-[11px] text-stone-300 leading-relaxed">
-                        Imposta il <strong class="text-amber-300">Logo del Locale</strong> oppure la <strong class="text-amber-300">Foto Profilo Cliente</strong> (visibile anche al cliente sulla carta quando salvata via link pubblico o backend).
+                        Imposta il <strong class="text-amber-300">Logo del Locale</strong> oppure la <strong class="text-amber-300">Foto Profilo Cliente</strong>.
                     </div>
                     <div>
                         <label class="block text-[10px] uppercase text-stone-400 mb-1.5">URL Logo / Foto Profilo (https://...)</label>
                         <div class="flex gap-2">
                             <input type="url" id="admin-logo-url" placeholder="https://www.pizzeriaata.com/logo.png"
                                 class="flex-1 px-3 py-2 rounded-xl bg-stone-950 border border-stone-800 text-xs text-white focus:outline-none focus:border-pizzaOrange">
-                            <button onclick="saveLogoUrl()" class="px-3 py-2 bg-pizzaOrange hover:bg-orange-600 rounded-xl text-xs font-bold text-white transition">
+                            <button type="button" onclick="saveLogoUrl()" class="px-3 py-2 bg-pizzaOrange hover:bg-orange-600 rounded-xl text-xs font-bold text-white transition">
                                 Salva
                             </button>
                         </div>
@@ -508,7 +505,7 @@
                         <input type="file" id="admin-logo-file" accept="image/*" onchange="handleGalleryLogoUpload(event)"
                             class="w-full text-xs text-stone-300 file:mr-3 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-pizzaOrange file:text-white hover:file:bg-orange-600 cursor-pointer bg-stone-950 rounded-xl border border-stone-800 p-1">
                     </div>
-                    <button onclick="resetAdminLogo()" class="w-full py-2 bg-stone-800 hover:bg-stone-700 rounded-xl text-xs font-bold text-stone-300 transition">
+                    <button type="button" onclick="resetAdminLogo()" class="w-full py-2 bg-stone-800 hover:bg-stone-700 rounded-xl text-xs font-bold text-stone-300 transition">
                         Rimuovi Foto
                     </button>
                     <div id="admin-logo-msg" class="text-xs text-center text-stone-400"></div>
@@ -521,22 +518,145 @@
     <footer class="w-full max-w-md mx-auto text-center py-4 text-xs text-stone-600 border-t border-stone-900">
         &copy; 2026 Pizzeria ATA &bull; Tutti i diritti riservati
     </footer>
+
+    <!-- IN-APP MENU MODAL -->
+    <div id="menu-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-3 sm:p-5">
+        <div class="editorial-card w-full max-w-md max-h-[85vh] rounded-3xl border border-amber-500/30 flex flex-col overflow-hidden">
+            <div class="p-4 border-b border-stone-800 flex items-center justify-between">
+                <div>
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-amber-400 font-bold">Asporto &bull; Pizzeria ATA</p>
+                    <h3 class="font-serif text-2xl font-bold text-white leading-tight">Il Nostro Menu</h3>
+                </div>
+                <button type="button" onclick="closeMenuModal()" class="px-3 py-1.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-xs font-bold text-stone-200 transition">
+                    Chiudi ✕
+                </button>
+            </div>
+
+            <div class="px-4 pt-3 pb-2 flex gap-2 overflow-x-auto border-b border-stone-800/80 text-xs shrink-0" id="menu-category-tabs">
+                <button type="button" onclick="filterMenuCategory('Tutte')" data-cat="Tutte" class="menu-cat-btn px-3 py-1.5 rounded-full bg-pizzaOrange text-white font-bold whitespace-nowrap">Tutte</button>
+                <button type="button" onclick="filterMenuCategory('Classiche')" data-cat="Classiche" class="menu-cat-btn px-3 py-1.5 rounded-full bg-stone-900 text-stone-300 border border-stone-800 font-semibold whitespace-nowrap">Classiche</button>
+                <button type="button" onclick="filterMenuCategory('Speciali')" data-cat="Speciali" class="menu-cat-btn px-3 py-1.5 rounded-full bg-stone-900 text-stone-300 border border-stone-800 font-semibold whitespace-nowrap">Speciali</button>
+                <button type="button" onclick="filterMenuCategory('Bibite')" data-cat="Bibite" class="menu-cat-btn px-3 py-1.5 rounded-full bg-stone-900 text-stone-300 border border-stone-800 font-semibold whitespace-nowrap">Bibite</button>
+            </div>
+
+            <div id="menu-pdf-viewer-box" class="hidden p-4 space-y-3 overflow-y-auto flex-grow text-xs">
+                <div class="bg-stone-950/90 border border-amber-500/30 rounded-2xl p-3 flex items-center justify-between gap-2">
+                    <div>
+                        <p id="menu-pdf-title" class="font-bold text-amber-300 text-xs">Menu PDF Pizzeria ATA</p>
+                        <p class="text-[11px] text-stone-400">Leggi il PDF qui sotto e poi ordina su WhatsApp o chiedi il PIN.</p>
+                    </div>
+                    <a id="menu-pdf-open-link" href="#" target="_blank" download="Menu-Pizzeria-ATA.pdf"
+                        class="px-3 py-1.5 rounded-xl bg-pizzaOrange hover:bg-orange-600 text-white font-bold text-[11px] shrink-0 transition">
+                        Apri / PDF
+                    </a>
+                </div>
+                <iframe id="menu-pdf-iframe" src="" class="w-full h-80 rounded-2xl border border-stone-800 bg-stone-950" title="Menu PDF"></iframe>
+                <div class="flex gap-2">
+                    <a id="menu-pdf-wa-order-btn" href="https://wa.me/393509935193" target="_blank"
+                        class="flex-1 text-center py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition">
+                        💬 Ordina su WhatsApp
+                    </a>
+                    <button type="button" onclick="closeMenuModal()"
+                        class="px-4 py-2.5 bg-stone-800 hover:bg-stone-700 text-stone-200 font-bold text-xs rounded-xl transition">
+                        Inserisci PIN
+                    </button>
+                </div>
+            </div>
+
+            <div id="in-app-menu-list" class="p-4 space-y-2.5 overflow-y-auto flex-grow text-xs"></div>
+
+            <div class="p-3.5 border-t border-stone-800 bg-stone-950/90 flex items-center justify-between gap-2 text-xs shrink-0">
+                <span class="text-stone-400">Listino completo online:</span>
+                <a href="https://www.pizzeriaata.com/" target="_blank" class="text-amber-300 hover:underline font-bold">
+                    pizzeriaata.com &rarr;
+                </a>
+            </div>
+        </div>
+    </div>
     <script>
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzYrPO2mukLdJpn4vOtQhB6vhq2ZgiVMcPwpYJFKGs-Pzu6CbPLNoOSXFN6qsphDwjN/exec";
         const LOGO_STORAGE_KEY = "ata_custom_logo_data";
         const SCRATCH_10_KEY = "ata_scratch_10_revealed";
+        const MENU_PDF_KEY = "ata_menu_pdf_config_v1";
+        const OFFER_CONFIG_KEY = "ata_offers_config_v2";
         const VOICE_ALERT_TEXT = "PizzeriaAta new order";
 
-        let currentUser = JSON.parse(localStorage.getItem('ata_user')) || null;
+        let currentUser = null;
+        try {
+            currentUser = JSON.parse(localStorage.getItem('ata_user')) || null;
+        } catch (e) {
+            currentUser = null;
+        }
+
         let audioUnlocked = false;
         let sharedAudioCtx = null;
+        let currentMenuPdf = { name: "", dataUrl: "" };
+        let activeMenuCategory = 'Tutte';
+        let scratchInitialized = false;
+        let allAdminClients = [];
+
+        const DEFAULT_OFFER_CONFIG = {
+            badge1Title: "1° Ordine",
+            badge1Sub: "Bibita Gratis",
+            badge2Title: "Fino al 25%",
+            badge2Sub: "Sconti Fedeltà",
+            badge3Title: "10° Timbro",
+            badge3Sub: "Pizza Gratis",
+            stampOffers: {
+                1: "🥤 1° Timbro: Coca-Cola / Fanta 33 Gratis",
+                2: "✨ 2° Timbro: Sconto 10% (Min 20€)",
+                3: "",
+                4: "",
+                5: "✨ 5° Timbro: Sconto 20% (Min 25€)",
+                6: "",
+                7: "✨ 7° Timbro: Sconto 25% (Min 30€)",
+                8: "",
+                9: "",
+                10: "🎉 10° Timbro: 1 Pizza Gratis (Min 30€)"
+            },
+            scratchBadge: "1 PIZZA GRATIS"
+        };
+
+        let currentOfferConfig = {
+            ...DEFAULT_OFFER_CONFIG,
+            stampOffers: { ...DEFAULT_OFFER_CONFIG.stampOffers }
+        };
+
+        const DEFAULT_MENU_ITEMS = [
+            { name: "Margherita", cat: "Classiche", price: "6,50€", desc: "Pomodoro San Marzano, mozzarella, basilico, olio EVO" },
+            { name: "Marinara", cat: "Classiche", price: "5,50€", desc: "Pomodoro San Marzano, aglio, origano, olio EVO" },
+            { name: "Diavola", cat: "Classiche", price: "8,00€", desc: "Pomodoro, mozzarella, salame piccante" },
+            { name: "Napoli", cat: "Classiche", price: "7,50€", desc: "Pomodoro, mozzarella, alici di Cetara, origano" },
+            { name: "Capricciosa", cat: "Speciali", price: "9,50€", desc: "Pomodoro, mozzarella, prosciutto cotto, funghi, carciofi, olive" },
+            { name: "Bufalina", cat: "Speciali", price: "9,50€", desc: "Pomodoro, mozzarella di bufala campana DOP, basilico" },
+            { name: "Quattro Formaggi", cat: "Speciali", price: "9,00€", desc: "Mozzarella, gorgonzola, fontina, parmigiano reggiano" },
+            { name: "Boscaiola", cat: "Speciali", price: "9,00€", desc: "Mozzarella, salsiccia artigianale, funghi" },
+            { name: "Coca-Cola 33cl", cat: "Bibite", price: "2,50€", desc: "Lattina 33cl (Omaggio 1° ordine)" },
+            { name: "Fanta 33cl", cat: "Bibite", price: "2,50€", desc: "Lattina 33cl (Omaggio 1° ordine)" }
+        ];
+
+        async function postToScript(payload) {
+            const response = await fetch(SCRIPT_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify(payload)
+            });
+            if (!response.ok) {
+                throw new Error("HTTP " + response.status);
+            }
+            const text = await response.text();
+            return JSON.parse(text);
+        }
 
         function normalizeStampCount(rawStamps) {
             const num = Number(rawStamps);
             if (!Number.isFinite(num) || num <= 0) return 0;
-            // After 10 orders, cycle automatically starts from 0 (e.g., 10 -> 0, 11 -> 1)
             const mod = num % 10;
             return mod === 0 ? 0 : mod;
+        }
+
+        function hasCompletedTenthStamp(rawStamps, cycleStamps) {
+            return Number(rawStamps) >= 10 || Number(cycleStamps) >= 10;
         }
 
         function updateCycleResetNotice(rawStamps) {
@@ -579,9 +699,7 @@
                 gain.connect(ctx.destination);
                 osc.start();
                 osc.stop(ctx.currentTime + 0.35);
-            } catch (e) {
-                // Ignore audio errors on restricted devices
-            }
+            } catch (e) {}
         }
 
         function triggerNewOrderVoiceAlert(reasonLabel = "") {
@@ -628,9 +746,6 @@
             }
         }, { passive: true });
 
-        const MENU_PDF_KEY = "ata_menu_pdf_config_v1";
-        let currentMenuPdf = { name: "", dataUrl: "" };
-
         function loadSavedMenuPdf() {
             try {
                 const raw = localStorage.getItem(MENU_PDF_KEY);
@@ -662,17 +777,13 @@
         async function syncMenuPdfToBackend(pdfObj) {
             const pass = (document.getElementById('admin-pass')?.value || '').trim() || 'ata2026';
             try {
-                const res = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        action: 'adminAction',
-                        subAction: 'setMenuPdf',
-                        password: pass,
-                        menuPdf: pdfObj
-                    })
+                const data = await postToScript({
+                    action: 'adminAction',
+                    subAction: 'setMenuPdf',
+                    password: pass,
+                    menuPdf: pdfObj
                 });
-                const data = await res.json();
-                return data && data.status === 'success';
+                return Boolean(data && data.status === 'success');
             } catch (e) {
                 return false;
             }
@@ -680,11 +791,7 @@
 
         async function fetchGlobalMenuPdf() {
             try {
-                const res = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({ action: 'getMenuPdf' })
-                });
-                const data = await res.json();
+                const data = await postToScript({ action: 'getMenuPdf' });
                 if (data && data.status === 'success' && data.menuPdf && data.menuPdf.dataUrl) {
                     currentMenuPdf = {
                         name: data.menuPdf.name || "Menu-Pizzeria-ATA.pdf",
@@ -693,9 +800,7 @@
                     localStorage.setItem(MENU_PDF_KEY, JSON.stringify(currentMenuPdf));
                     updateMenuPdfStatusUI();
                 }
-            } catch (e) {
-                // Keep local PDF if backend does not support getMenuPdf
-            }
+            } catch (e) {}
         }
 
         function handleMenuPdfUpload(event) {
@@ -739,7 +844,7 @@
                 if (msg) {
                     msg.textContent = synced
                         ? "Menu PDF caricato e sincronizzato per i clienti!"
-                        : "Menu PDF salvato su questo dispositivo. I clienti su questo browser/dispositivo leggeranno il PDF.";
+                        : "Menu PDF salvato su questo dispositivo.";
                     msg.style.color = synced ? "#4ade80" : "#fbbf24";
                 }
             };
@@ -762,11 +867,9 @@
             currentMenuPdf = { name: "Menu-Pizzeria-ATA.pdf", dataUrl: url };
             localStorage.setItem(MENU_PDF_KEY, JSON.stringify(currentMenuPdf));
             updateMenuPdfStatusUI();
-            const synced = await syncMenuPdfToBackend(currentMenuPdf);
+            await syncMenuPdfToBackend(currentMenuPdf);
             if (msg) {
-                msg.textContent = synced
-                    ? "Link Menu PDF salvato e visibile a tutti!"
-                    : "Link Menu PDF salvato! I clienti potranno aprirlo e leggerlo dal menu.";
+                msg.textContent = "Link Menu PDF salvato!";
                 msg.style.color = "#4ade80";
             }
         }
@@ -786,34 +889,6 @@
                 msg.style.color = "#9ca3af";
             }
         }
-        const OFFER_CONFIG_KEY = "ata_offers_config_v2";
-
-        const DEFAULT_OFFER_CONFIG = {
-            badge1Title: "1° Ordine",
-            badge1Sub: "Bibita Gratis",
-            badge2Title: "Fino al 25%",
-            badge2Sub: "Sconti Fedeltà",
-            badge3Title: "10° Timbro",
-            badge3Sub: "Pizza Gratis",
-            stampOffers: {
-                1: "🥤 1° Timbro: Coca-Cola / Fanta 33 Gratis",
-                2: "✨ 2° Timbro: Sconto 10% (Min 20€)",
-                3: "",
-                4: "",
-                5: "✨ 5° Timbro: Sconto 20% (Min 25€)",
-                6: "",
-                7: "✨ 7° Timbro: Sconto 25% (Min 30€)",
-                8: "",
-                9: "",
-                10: "🎉 10° Timbro: 1 Pizza Gratis (Min 30€)"
-            },
-            scratchBadge: "1 PIZZA GRATIS"
-        };
-
-        let currentOfferConfig = {
-            ...DEFAULT_OFFER_CONFIG,
-            stampOffers: { ...DEFAULT_OFFER_CONFIG.stampOffers }
-        };
 
         function normalizeStampOffers(rawOffers, legacyCfg) {
             const out = { ...DEFAULT_OFFER_CONFIG.stampOffers };
@@ -949,9 +1024,7 @@
             const slotNum = Number(slotSelect?.value || 3);
             const val = (slotInput?.value || '').trim();
             const rowInput = document.getElementById(`cfg-s${slotNum}`);
-            if (rowInput) {
-                rowInput.value = val;
-            }
+            if (rowInput) rowInput.value = val;
             const msg = document.getElementById('admin-offer-msg');
             if (msg) {
                 msg.textContent = `Timbro #${slotNum} aggiornato. Premi "Salva Offerte" per confermare.`;
@@ -976,17 +1049,13 @@
         async function syncOffersConfigToBackend(cfg) {
             const pass = (document.getElementById('admin-pass')?.value || '').trim() || 'ata2026';
             try {
-                const res = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        action: 'adminAction',
-                        subAction: 'setConfig',
-                        password: pass,
-                        config: cfg
-                    })
+                const data = await postToScript({
+                    action: 'adminAction',
+                    subAction: 'setConfig',
+                    password: pass,
+                    config: cfg
                 });
-                const data = await res.json();
-                return data && data.status === 'success';
+                return Boolean(data && data.status === 'success');
             } catch (e) {
                 return false;
             }
@@ -994,11 +1063,7 @@
 
         async function fetchGlobalOffersConfig() {
             try {
-                const res = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({ action: 'getConfig' })
-                });
-                const data = await res.json();
+                const data = await postToScript({ action: 'getConfig' });
                 if (data && data.status === 'success' && data.config && typeof data.config === 'object') {
                     currentOfferConfig = {
                         ...DEFAULT_OFFER_CONFIG,
@@ -1009,9 +1074,7 @@
                     applyOffersConfigToView(currentOfferConfig);
                     populateOffersAdminInputs(currentOfferConfig);
                 }
-            } catch (e) {
-                // Keep local config if backend does not implement getConfig
-            }
+            } catch (e) {}
         }
 
         async function saveOffersConfig() {
@@ -1038,13 +1101,10 @@
 
             const synced = await syncOffersConfigToBackend(nextCfg);
             if (msg) {
-                if (synced) {
-                    msg.textContent = "Offerte 1–10 salvate e sincronizzate per tutti!";
-                    msg.style.color = "#4ade80";
-                } else {
-                    msg.textContent = "Offerte 1–10 aggiornate su questo dispositivo. Per sincronizzarle su tutti i telefoni, abilita 'setConfig/getConfig' su Apps Script.";
-                    msg.style.color = "#fbbf24";
-                }
+                msg.textContent = synced
+                    ? "Offerte 1–10 salvate e sincronizzate per tutti!"
+                    : "Offerte 1–10 aggiornate su questo dispositivo.";
+                msg.style.color = synced ? "#4ade80" : "#fbbf24";
             }
         }
 
@@ -1063,23 +1123,6 @@
                 msg.style.color = "#9ca3af";
             }
         }
-    </script>
-    <script>
-        const DEFAULT_MENU_ITEMS = [
-            { name: "Margherita", cat: "Classiche", price: "6,50€", desc: "Pomodoro San Marzano, mozzarella, basilico, olio EVO" },
-            { name: "Marinara", cat: "Classiche", price: "5,50€", desc: "Pomodoro San Marzano, aglio, origano, olio EVO" },
-            { name: "Diavola", cat: "Classiche", price: "8,00€", desc: "Pomodoro, mozzarella, salame piccante" },
-            { name: "Napoli", cat: "Classiche", price: "7,50€", desc: "Pomodoro, mozzarella, alici di Cetara, origano" },
-            { name: "Capricciosa", cat: "Speciali", price: "9,50€", desc: "Pomodoro, mozzarella, prosciutto cotto, funghi, carciofi, olive" },
-            { name: "Bufalina", cat: "Speciali", price: "9,50€", desc: "Pomodoro, mozzarella di bufala campana DOP, basilico" },
-            { name: "Quattro Formaggi", cat: "Speciali", price: "9,00€", desc: "Mozzarella, gorgonzola, fontina, parmigiano reggiano" },
-            { name: "Boscaiola", cat: "Speciali", price: "9,00€", desc: "Mozzarella, salsiccia artigianale, funghi" },
-            { name: "Coca-Cola 33cl", cat: "Bibite", price: "2,50€", desc: "Lattina 33cl (Omaggio 1° ordine)" },
-            { name: "Fanta 33cl", cat: "Bibite", price: "2,50€", desc: "Lattina 33cl (Omaggio 1° ordine)" }
-        ];
-
-        let activeMenuCategory = 'Tutte';
-
         function openMenuModal() {
             const modal = document.getElementById('menu-modal');
             if (!modal) return;
@@ -1102,7 +1145,7 @@
                 if (titleEl) titleEl.textContent = currentMenuPdf.name || "Menu PDF Pizzeria ATA";
                 if (waOrderBtn) {
                     const userTag = currentUser ? ` (${currentUser.name} - ${currentUser.code})` : '';
-                    waOrderBtn.href = `https://wa.me/393509935193?text=${encodeURIComponent(`Ciao Pizzeria ATA! Ho letto il menu PDF e vorrei ordinare d'asporto${userTag}.`)}`;
+                    waOrderBtn.href = `https://wa.me/393509935193?text=${encodeURIComponent("Ciao Pizzeria ATA! Ho letto il menu PDF e vorrei ordinare d'asporto" + userTag + ".")}`;
                 }
             } else {
                 if (catTabs) catTabs.classList.remove('hidden');
@@ -1164,19 +1207,6 @@
                 container.appendChild(row);
             });
         }
-        let scratchInitialized = false;
-
-        window.onload = function() {
-            loadSavedLogo();
-            fetchGlobalLogo();
-            loadSavedOffersConfig();
-            fetchGlobalOffersConfig();
-            loadSavedMenuPdf();
-            fetchGlobalMenuPdf();
-            if (currentUser) {
-                showDashboard(currentUser);
-            }
-        };
 
         function applyProfilePicToClient(picValue, userObj) {
             const avatarImg = document.getElementById('client-profile-avatar');
@@ -1205,20 +1235,24 @@
             const urlInput = document.getElementById('admin-logo-url');
 
             if (logoValue && logoValue.trim() !== "") {
-                logoImg.onerror = function() {
-                    logoImg.classList.add('hidden');
-                    fallback.classList.remove('hidden');
-                };
-                logoImg.src = logoValue.trim();
-                logoImg.classList.remove('hidden');
-                fallback.classList.add('hidden');
+                if (logoImg && fallback) {
+                    logoImg.onerror = function() {
+                        logoImg.classList.add('hidden');
+                        fallback.classList.remove('hidden');
+                    };
+                    logoImg.src = logoValue.trim();
+                    logoImg.classList.remove('hidden');
+                    fallback.classList.add('hidden');
+                }
                 if (urlInput && logoValue.trim().startsWith('http')) {
                     urlInput.value = logoValue.trim();
                 }
             } else {
-                logoImg.src = "";
-                logoImg.classList.add('hidden');
-                fallback.classList.remove('hidden');
+                if (logoImg) {
+                    logoImg.src = "";
+                    logoImg.classList.add('hidden');
+                }
+                if (fallback) fallback.classList.remove('hidden');
             }
 
             if (currentUser) {
@@ -1238,18 +1272,14 @@
         async function syncLogoToBackend(logoValue) {
             const pass = (document.getElementById('admin-pass')?.value || '').trim() || 'ata2026';
             try {
-                const res = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        action: 'adminAction',
-                        subAction: 'setLogo',
-                        password: pass,
-                        logoUrl: logoValue,
-                        profilePic: logoValue
-                    })
+                const data = await postToScript({
+                    action: 'adminAction',
+                    subAction: 'setLogo',
+                    password: pass,
+                    logoUrl: logoValue,
+                    profilePic: logoValue
                 });
-                const data = await res.json();
-                return data && data.status === 'success';
+                return Boolean(data && data.status === 'success');
             } catch (e) {
                 return false;
             }
@@ -1257,21 +1287,13 @@
 
         async function fetchGlobalLogo() {
             try {
-                const res = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({ action: 'getLogo' })
-                });
-                const data = await res.json();
+                const data = await postToScript({ action: 'getLogo' });
                 const remotePic = (data && (data.logoUrl || data.profilePic)) || "";
-                if (data && data.status === 'success' && typeof remotePic === 'string') {
-                    if (remotePic.trim() !== "") {
-                        localStorage.setItem(LOGO_STORAGE_KEY, remotePic.trim());
-                        applyLogoToView(remotePic.trim());
-                    }
+                if (data && data.status === 'success' && typeof remotePic === 'string' && remotePic.trim() !== "") {
+                    localStorage.setItem(LOGO_STORAGE_KEY, remotePic.trim());
+                    applyLogoToView(remotePic.trim());
                 }
-            } catch (e) {
-                // Keep local logo if backend does not support getLogo yet
-            }
+            } catch (e) {}
         }
 
         async function saveLogoUrl() {
@@ -1280,31 +1302,32 @@
             const url = (urlInput?.value || '').trim();
 
             if (!url || (!url.startsWith('https://') && !url.startsWith('http://'))) {
-                msg.textContent = "Inserisci un link immagine valido (https://...)";
-                msg.style.color = "#f87171";
+                if (msg) {
+                    msg.textContent = "Inserisci un link immagine valido (https://...)";
+                    msg.style.color = "#f87171";
+                }
                 return;
             }
 
             localStorage.setItem(LOGO_STORAGE_KEY, url);
             applyLogoToView(url);
             const synced = await syncLogoToBackend(url);
-            if (synced) {
-                msg.textContent = "Foto salvata e visibile a tutti i clienti!";
-                msg.style.color = "#4ade80";
-            } else {
-                msg.textContent = "Foto impostata qui. Per farla vedere su ogni dispositivo ai clienti, abilita 'setLogo/getLogo' su Apps Script o usa un link pubblico.";
-                msg.style.color = "#fbbf24";
+            if (msg) {
+                msg.textContent = synced ? "Foto salvata e visibile a tutti i clienti!" : "Foto impostata su questo dispositivo.";
+                msg.style.color = synced ? "#4ade80" : "#fbbf24";
             }
         }
 
         function handleGalleryLogoUpload(event) {
-            const file = event.target.files[0];
+            const file = event.target.files?.[0];
             const msg = document.getElementById('admin-logo-msg');
             if (!file) return;
 
             if (!file.type.startsWith('image/')) {
-                msg.textContent = "Seleziona un file immagine valido!";
-                msg.style.color = "#f87171";
+                if (msg) {
+                    msg.textContent = "Seleziona un file immagine valido!";
+                    msg.style.color = "#f87171";
+                }
                 return;
             }
 
@@ -1339,16 +1362,15 @@
                         localStorage.setItem(LOGO_STORAGE_KEY, compressedDataUrl);
                         applyLogoToView(compressedDataUrl);
                         const synced = await syncLogoToBackend(compressedDataUrl);
-                        if (synced) {
-                            msg.textContent = "Foto salvata e sincronizzata per i clienti!";
-                            msg.style.color = "#4ade80";
-                        } else {
-                            msg.textContent = "Foto salvata su questo dispositivo. Per farla vedere a tutti i clienti su ogni telefono, inserisci un URL immagine oppure aggiungi 'setLogo'/'getLogo' in Apps Script.";
-                            msg.style.color = "#fbbf24";
+                        if (msg) {
+                            msg.textContent = synced ? "Foto salvata e sincronizzata!" : "Foto salvata su questo dispositivo.";
+                            msg.style.color = synced ? "#4ade80" : "#fbbf24";
                         }
                     } catch (storageErr) {
-                        msg.textContent = "Impossibile salvare: prova con una foto più leggera o un URL.";
-                        msg.style.color = "#f87171";
+                        if (msg) {
+                            msg.textContent = "Impossibile salvare: prova con una foto più leggera o un URL.";
+                            msg.style.color = "#f87171";
+                        }
                     }
                 };
                 img.src = e.target.result;
@@ -1365,8 +1387,10 @@
             applyLogoToView("");
             await syncLogoToBackend("");
             const msg = document.getElementById('admin-logo-msg');
-            msg.textContent = "Foto rimossa.";
-            msg.style.color = "#9ca3af";
+            if (msg) {
+                msg.textContent = "Foto rimossa.";
+                msg.style.color = "#9ca3af";
+            }
         }
 
         async function handleLogin(e) {
@@ -1376,32 +1400,38 @@
             const errDiv = document.getElementById('login-error');
             const btn = document.getElementById('login-btn');
 
+            if (!identifier || !name) return;
+
             errDiv.classList.add('hidden');
+            btn.disabled = true;
             btn.textContent = 'Accesso in corso...';
 
             try {
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({ action: 'loginOrRegister', identifier: identifier, name: name })
+                const data = await postToScript({
+                    action: 'loginOrRegister',
+                    identifier: identifier,
+                    name: name
                 });
-                const data = await response.json();
 
-                if (data.status === 'success') {
+                if (data && data.status === 'success') {
                     const savedPic = localStorage.getItem(LOGO_STORAGE_KEY) || "";
                     currentUser = {
                         ...data,
+                        phone: data.phone || identifier,
+                        name: data.name || name,
                         profilePic: data.profilePic || data.avatar || savedPic
                     };
                     localStorage.setItem('ata_user', JSON.stringify(currentUser));
                     showDashboard(currentUser);
                 } else {
-                    errDiv.textContent = data.message;
+                    errDiv.textContent = (data && data.message) || 'Accesso non riuscito. Controlla i dati o il backend.';
                     errDiv.classList.remove('hidden');
                 }
             } catch (err) {
-                errDiv.textContent = 'Errore di connessione. Riprova.';
+                errDiv.textContent = 'Errore di connessione o permessi Apps Script (verifica "Anyone").';
                 errDiv.classList.remove('hidden');
             } finally {
+                btn.disabled = false;
                 btn.textContent = 'Apri la mia carta →';
             }
         }
@@ -1428,18 +1458,14 @@
                 btn.textContent = "💬 Chiedi PIN Ordine";
             }
 
-            const msg = encodeURIComponent(
-                `Ciao Pizzeria ATA! Richiesta PIN per Ordine / Timbro #${nextOrderNum}.
-` +
-                `Carta Fedeltà: ${user.code}
-` +
-                `Nome: ${user.name}
-` +
-                `Telefono: ${phoneText}
-` +
+            const lines = [
+                `Ciao Pizzeria ATA! Richiesta PIN per Ordine / Timbro #${nextOrderNum}.`,
+                `Carta Fedeltà: ${user.code || 'ATA-0000'}`,
+                `Nome: ${user.name || ''}`,
+                `Telefono: ${phoneText}`,
                 `Timbri attuali: ${currentStamps}/10`
-            );
-            btn.href = `https://wa.me/393509935193?text=${msg}`;
+            ];
+            btn.href = `https://wa.me/393509935193?text=${encodeURIComponent(lines.join('\n'))}`;
         }
 
         function updateTenthPizzaOrder() {
@@ -1469,19 +1495,19 @@
             if (box) {
                 box.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
-            if (Number(currentUser?.stamps || 0) >= 10) {
+            if (hasCompletedTenthStamp(currentUser?.rawStamps, currentUser?.stamps)) {
                 revealTenthPizzaSelector();
             }
         }
 
-        function setupScratch10thOrder(stamps, user) {
+        function setupScratch10thOrder(rawStamps, user) {
             const canvas = document.getElementById('scratch-canvas-10');
             const statusText = document.getElementById('scratch-status-text');
             const selectorBox = document.getElementById('tenth-pizza-selector');
             if (!canvas || !statusText) return;
 
             const ctx = canvas.getContext('2d');
-            const isUnlocked = Number(stamps) >= 10;
+            const isUnlocked = hasCompletedTenthStamp(rawStamps, user?.stamps);
             const revealedKey = `${SCRATCH_10_KEY}_${user.code || 'guest'}`;
             const alreadyRevealed = localStorage.getItem(revealedKey) === 'true';
 
@@ -1551,7 +1577,7 @@
             }
 
             function scratchAt(e) {
-                if (!isScratching || Number(currentUser?.stamps || 0) < 10) return;
+                if (!isScratching || !hasCompletedTenthStamp(currentUser?.rawStamps, currentUser?.stamps)) return;
                 const pos = getPos(e);
                 ctx.globalCompositeOperation = 'destination-out';
                 ctx.beginPath();
@@ -1569,27 +1595,29 @@
             document.getElementById('login-section').classList.add('hidden');
             document.getElementById('dashboard-section').classList.remove('hidden');
             const phoneVal = user.phone || user.identifier || '';
+            const rawStamps = Number(user.rawStamps ?? user.stamps ?? 0);
             const displayStamps = normalizeStampCount(user.stamps);
 
-            document.getElementById('user-display-name').textContent = user.name;
+            document.getElementById('user-display-name').textContent = user.name || 'Cliente';
             const phoneEl = document.getElementById('user-display-phone');
             if (phoneEl) {
                 phoneEl.textContent = phoneVal ? `📞 ${phoneVal}` : '';
                 phoneEl.classList.toggle('hidden', !phoneVal);
             }
-            document.getElementById('user-display-code').textContent = user.code;
+            document.getElementById('user-display-code').textContent = user.code || 'ATA-0000';
             document.getElementById('stamp-count').textContent = displayStamps;
 
             applyProfilePicToClient(user.profilePic || user.avatar || localStorage.getItem(LOGO_STORAGE_KEY) || "", user);
-            updateCycleResetNotice(user.stamps);
+            updateCycleResetNotice(rawStamps);
             updateOrderPinBox(user);
-            setupScratch10thOrder(user.stamps, user);
+            setupScratch10thOrder(rawStamps, user);
             renderStamps(displayStamps);
             checkReward(user.reward, user.code);
         }
 
         function renderStamps(stamps) {
             const grid = document.getElementById('stamps-grid');
+            if (!grid) return;
             grid.innerHTML = '';
             const activeCount = normalizeStampCount(stamps);
             const offers = normalizeStampOffers(currentOfferConfig?.stampOffers, currentOfferConfig);
@@ -1633,20 +1661,23 @@
             const rewardBox = document.getElementById('reward-box');
             const rewardDesc = document.getElementById('reward-text');
             const whatsappBtn = document.getElementById('whatsapp-reward-btn');
+            if (!rewardBox || !rewardDesc || !whatsappBtn) return;
 
             if (rewardText && rewardText.trim() !== "") {
                 rewardBox.classList.remove('hidden');
                 rewardDesc.textContent = rewardText;
-                
-                const waMessage = encodeURIComponent(`Ciao Pizzeria ATA! Ho sbloccato un premio sulla mia carta fedeltà (${userCode}). Il mio codice premio è: ${rewardText}`);
+
+                const waMessage = encodeURIComponent(`Ciao Pizzeria ATA! Ho sbloccato un premio sulla mia carta fedeltà (${userCode || 'ATA-0000'}). Il mio codice premio è: ${rewardText}`);
                 whatsappBtn.href = `https://wa.me/393509935193?text=${waMessage}`;
             } else {
                 rewardBox.classList.add('hidden');
             }
         }
-async function redeemPin() {
+
+        async function redeemPin() {
             const pin = document.getElementById('redeem-pin-input').value.trim();
             const msg = document.getElementById('redeem-msg');
+            if (!msg) return;
 
             if (!pin) {
                 msg.textContent = 'Inserisci il PIN!';
@@ -1656,34 +1687,34 @@ async function redeemPin() {
 
             msg.textContent = 'Verifica in corso...';
             try {
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({ action: 'redeemPIN', pin: pin })
-                });
-                const data = await response.json();
+                const data = await postToScript({ action: 'redeemPIN', pin: pin });
 
-                if (data.status === 'success') {
+                if (data && data.status === 'success') {
                     const rawStamps = Number(data.stamps || 0);
                     const cycleStamps = normalizeStampCount(rawStamps);
                     msg.textContent = rawStamps > 0 && rawStamps % 10 === 0
                         ? '10 ordini completati! Contatore ripartito da 0.'
                         : 'Timbro aggiunto con successo!';
                     msg.style.color = '#4ade80';
+
+                    if (!currentUser) {
+                        currentUser = { name: 'Cliente', code: 'ATA-0000' };
+                    }
                     currentUser.stamps = cycleStamps;
                     currentUser.rawStamps = rawStamps;
-                    currentUser.reward = data.reward;
+                    currentUser.reward = data.reward || '';
                     localStorage.setItem('ata_user', JSON.stringify(currentUser));
-                    
+
                     document.getElementById('stamp-count').textContent = cycleStamps;
                     updateCycleResetNotice(rawStamps);
                     updateOrderPinBox(currentUser);
                     setupScratch10thOrder(rawStamps, currentUser);
                     renderStamps(cycleStamps);
-                    checkReward(data.reward, currentUser.code);
+                    checkReward(currentUser.reward, currentUser.code);
                     document.getElementById('redeem-pin-input').value = '';
                     triggerNewOrderVoiceAlert("Nuovo Ordine");
                 } else {
-                    msg.textContent = data.message;
+                    msg.textContent = (data && data.message) || 'PIN non valido.';
                     msg.style.color = '#f87171';
                 }
             } catch (err) {
@@ -1701,24 +1732,35 @@ async function redeemPin() {
         }
 
         function triggerSecretAdmin() {
-            document.getElementById('admin-section').classList.toggle('hidden');
+            const adminSec = document.getElementById('admin-section');
+            if (!adminSec) return;
+            adminSec.classList.toggle('hidden');
+            if (!adminSec.classList.contains('hidden')) {
+                adminSec.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
         }
 
         function lockAdmin() {
-            document.getElementById('admin-section').classList.add('hidden');
+            const adminSec = document.getElementById('admin-section');
+            if (adminSec) adminSec.classList.add('hidden');
         }
 
         async function unlockAdmin() {
             const passInput = document.getElementById('admin-pass');
+            const errEl = document.getElementById('admin-login-error');
             const pass = (passInput ? passInput.value : '').trim();
             if (pass === 'ata2026') {
+                if (errEl) errEl.classList.add('hidden');
                 document.getElementById('admin-login-box').classList.add('hidden');
                 document.getElementById('admin-content').classList.remove('hidden');
                 enableVoiceAlertManual();
                 switchAdminTab('pinGen');
                 loadClientList();
             } else {
-                alert('Password errata! Usa: ata2026');
+                if (errEl) {
+                    errEl.textContent = 'Password errata! Usa: ata2026';
+                    errEl.classList.remove('hidden');
+                }
             }
         }
 
@@ -1772,12 +1814,13 @@ async function redeemPin() {
         }
 
         async function generatePinForClient() {
-            const pass = document.getElementById('admin-pass').value;
+            const pass = (document.getElementById('admin-pass')?.value || '').trim() || 'ata2026';
             const rawPhoneInput = document.getElementById('admin-target-phone').value.trim();
             const phoneMatch = rawPhoneInput.match(/\+?\d[\d\s-]{6,}/);
             const phone = phoneMatch ? phoneMatch[0].replace(/[^0-9]/g, '') : rawPhoneInput.replace(/[^0-9]/g, '');
             const amount = document.getElementById('admin-order-amount').value.trim();
             const msg = document.getElementById('admin-msg');
+            if (!msg) return;
 
             if (!phone || !amount) {
                 msg.textContent = 'Inserisci telefono e importo!';
@@ -1787,13 +1830,15 @@ async function redeemPin() {
 
             msg.textContent = 'Conferma ordine e generazione PIN...';
             try {
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({ action: 'adminAction', subAction: 'generatePIN', password: pass, identifier: phone, amount: amount })
+                const data = await postToScript({
+                    action: 'adminAction',
+                    subAction: 'generatePIN',
+                    password: pass,
+                    identifier: phone,
+                    amount: amount
                 });
-                const data = await response.json();
 
-                if (data.status === 'success') {
+                if (data && data.status === 'success') {
                     triggerNewOrderVoiceAlert("Ordine Confermato");
                     const waPinMsg = encodeURIComponent(
                         `Ciao! Ordine confermato da Pizzeria ATA (${amount}€). Ecco il tuo PIN per riscattare il timbro: ${data.pin}`
@@ -1811,59 +1856,17 @@ async function redeemPin() {
                         </div>
                     `;
                     msg.style.color = '#ffffff';
-                    const offerPhoneInput = document.getElementById('admin-offer-phone');
-                    const offerPinInput = document.getElementById('admin-offer-pin');
-                    if (offerPhoneInput) offerPhoneInput.value = phone;
-                    if (offerPinInput) offerPinInput.value = data.pin;
                     document.getElementById('admin-target-phone').value = '';
                     document.getElementById('admin-order-amount').value = '';
                 } else {
-                    msg.textContent = data.message;
+                    msg.textContent = (data && data.message) || 'Errore nella generazione del PIN.';
                     msg.style.color = '#f87171';
                 }
             } catch (err) {
-                msg.textContent = 'Errore di connessione.';
+                msg.textContent = 'Errore di connessione o permessi Apps Script.';
                 msg.style.color = '#f87171';
             }
         }
-
-        function syncOfferPreset() {
-            const preset = document.getElementById('admin-offer-preset').value;
-            const textInput = document.getElementById('admin-offer-text');
-            if (preset !== 'CUSTOM' && textInput) {
-                textInput.value = preset;
-            }
-        }
-
-        function sendOfferOnWhatsApp() {
-            const rawPhone = (document.getElementById('admin-offer-phone').value || '').trim();
-            const offerText = (document.getElementById('admin-offer-text').value || '').trim();
-            const pinText = (document.getElementById('admin-offer-pin').value || '').trim();
-            const msgBox = document.getElementById('admin-offer-msg');
-
-            if (!offerText && !pinText) {
-                msgBox.textContent = 'Inserisci un testo offerta o un PIN.';
-                msgBox.style.color = '#f87171';
-                return;
-            }
-
-            let bodyLines = ['Ciao da Pizzeria ATA! Ordine confermato.'];
-            if (pinText) bodyLines.push(`PIN: ${pinText}`);
-            if (offerText) bodyLines.push(`Offerta / Premio: ${offerText}`);
-
-            const encoded = encodeURIComponent(bodyLines.join('
-'));
-            const digits = rawPhone.replace(/[^0-9]/g, '');
-            const waUrl = digits.length >= 8
-                ? `https://wa.me/${digits.startsWith('39') ? digits : '39' + digits}?text=${encoded}`
-                : `https://wa.me/?text=${encoded}`;
-
-            window.open(waUrl, '_blank');
-            msgBox.textContent = 'Messaggio pronto su WhatsApp!';
-            msgBox.style.color = '#4ade80';
-        }
-
-        let allAdminClients = [];
 
         function renderFilteredClients() {
             const container = document.getElementById('client-list-container');
@@ -1891,8 +1894,8 @@ async function redeemPin() {
                 div.className = "bg-stone-950 p-2.5 rounded-xl border border-stone-800 text-xs flex justify-between items-center gap-2";
                 div.innerHTML = `
                     <div>
-                        <p class="font-bold text-white">${c.name} <span class="text-[10px] text-amber-300 font-mono">(${c.code})</span></p>
-                        <p class="text-[11px] text-stone-300">📞 ${c.phone}</p>
+                        <p class="font-bold text-white">${c.name || 'Cliente'} <span class="text-[10px] text-amber-300 font-mono">(${c.code || '-'})</span></p>
+                        <p class="text-[11px] text-stone-300">📞 ${c.phone || '-'}</p>
                         <p class="text-[10px] text-stone-400">Ultimo: ${c.lastorder || '-'}</p>
                         ${c.reward ? `<p class="text-[10px] text-emerald-400">Premio: ${c.reward}</p>` : ''}
                     </div>
@@ -1906,18 +1909,19 @@ async function redeemPin() {
         }
 
         async function loadClientList() {
-            const pass = (document.getElementById('admin-pass').value || '').trim() || 'ata2026';
+            const pass = (document.getElementById('admin-pass')?.value || '').trim() || 'ata2026';
             const container = document.getElementById('client-list-container');
+            if (!container) return;
             container.innerHTML = '<p class="text-xs text-stone-500 text-center py-4">Caricamento lista...</p>';
 
             try {
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({ action: 'adminAction', subAction: 'getList', password: pass })
+                const data = await postToScript({
+                    action: 'adminAction',
+                    subAction: 'getList',
+                    password: pass
                 });
-                const data = await response.json();
 
-                if (data.status === 'success') {
+                if (data && data.status === 'success') {
                     allAdminClients = Array.isArray(data.clients) ? data.clients : [];
                     if (allAdminClients.length === 0) {
                         container.innerHTML = '<p class="text-xs text-stone-500 text-center py-4">Nessun cliente registrato.</p>';
@@ -1925,66 +1929,24 @@ async function redeemPin() {
                     }
                     renderFilteredClients();
                 } else {
-                    container.innerHTML = `<p class="text-xs text-red-400 text-center py-4">${data.message}</p>`;
+                    container.innerHTML = `<p class="text-xs text-red-400 text-center py-4">${(data && data.message) || 'Impossibile caricare i clienti.'}</p>`;
                 }
             } catch (err) {
                 container.innerHTML = '<p class="text-xs text-red-400 text-center py-4">Errore di connessione.</p>';
             }
         }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            loadSavedLogo();
+            fetchGlobalLogo();
+            loadSavedOffersConfig();
+            fetchGlobalOffersConfig();
+            loadSavedMenuPdf();
+            fetchGlobalMenuPdf();
+            if (currentUser) {
+                showDashboard(currentUser);
+            }
+        });
     </script>
-    <!-- IN-APP MENU MODAL (NO NEED TO LEAVE APP) -->
-    <div id="menu-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-3 sm:p-5">
-        <div class="editorial-card w-full max-w-md max-h-[85vh] rounded-3xl border border-amber-500/30 flex flex-col overflow-hidden">
-            <div class="p-4 border-b border-stone-800 flex items-center justify-between">
-                <div>
-                    <p class="text-[10px] uppercase tracking-[0.2em] text-amber-400 font-bold">Asporto &bull; Pizzeria ATA</p>
-                    <h3 class="font-serif text-2xl font-bold text-white leading-tight">Il Nostro Menu</h3>
-                </div>
-                <button type="button" onclick="closeMenuModal()" class="px-3 py-1.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-xs font-bold text-stone-200 transition">
-                    Chiudi ✕
-                </button>
-            </div>
-
-            <div class="px-4 pt-3 pb-2 flex gap-2 overflow-x-auto border-b border-stone-800/80 text-xs shrink-0" id="menu-category-tabs">
-                <button type="button" onclick="filterMenuCategory('Tutte')" data-cat="Tutte" class="menu-cat-btn px-3 py-1.5 rounded-full bg-pizzaOrange text-white font-bold whitespace-nowrap">Tutte</button>
-                <button type="button" onclick="filterMenuCategory('Classiche')" data-cat="Classiche" class="menu-cat-btn px-3 py-1.5 rounded-full bg-stone-900 text-stone-300 border border-stone-800 font-semibold whitespace-nowrap">Classiche</button>
-                <button type="button" onclick="filterMenuCategory('Speciali')" data-cat="Speciali" class="menu-cat-btn px-3 py-1.5 rounded-full bg-stone-900 text-stone-300 border border-stone-800 font-semibold whitespace-nowrap">Speciali</button>
-                <button type="button" onclick="filterMenuCategory('Bibite')" data-cat="Bibite" class="menu-cat-btn px-3 py-1.5 rounded-full bg-stone-900 text-stone-300 border border-stone-800 font-semibold whitespace-nowrap">Bibite</button>
-            </div>
-            <div id="menu-pdf-viewer-box" class="hidden p-4 space-y-3 overflow-y-auto flex-grow text-xs">
-                <div class="bg-stone-950/90 border border-amber-500/30 rounded-2xl p-3 flex items-center justify-between gap-2">
-                    <div>
-                        <p id="menu-pdf-title" class="font-bold text-amber-300 text-xs">Menu PDF Pizzeria ATA</p>
-                        <p class="text-[11px] text-stone-400">Leggi il PDF qui sotto e poi ordina su WhatsApp o chiedi il PIN.</p>
-                    </div>
-                    <a id="menu-pdf-open-link" href="#" target="_blank" download="Menu-Pizzeria-ATA.pdf"
-                        class="px-3 py-1.5 rounded-xl bg-pizzaOrange hover:bg-orange-600 text-white font-bold text-[11px] shrink-0 transition">
-                        Apri / PDF
-                    </a>
-                </div>
-                <iframe id="menu-pdf-iframe" src="" class="w-full h-80 rounded-2xl border border-stone-800 bg-stone-950" title="Menu PDF"></iframe>
-                <div class="flex gap-2">
-                    <a id="menu-pdf-wa-order-btn" href="https://wa.me/393509935193" target="_blank"
-                        class="flex-1 text-center py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition">
-                        💬 Ordina su WhatsApp
-                    </a>
-                    <button type="button" onclick="closeMenuModal()"
-                        class="px-4 py-2.5 bg-stone-800 hover:bg-stone-700 text-stone-200 font-bold text-xs rounded-xl transition">
-                        Inserisci PIN
-                    </button>
-                </div>
-            </div>
-
-            <div id="in-app-menu-list" class="p-4 space-y-2.5 overflow-y-auto flex-grow text-xs"></div>
-
-            <div class="p-3.5 border-t border-stone-800 bg-stone-950/90 flex items-center justify-between gap-2 text-xs shrink-0">
-                <span class="text-stone-400">Listino completo online:</span>
-                <a href="https://www.pizzeriaata.com/" target="_blank" class="text-amber-300 hover:underline font-bold">
-                    pizzeriaata.com &rarr;
-                </a>
-            </div>
-        </div>
-    </div>
-
 </body>
 </html>
